@@ -1,0 +1,53 @@
+from turtle import *
+import turtle
+
+t = Turtle()
+t.screen.setup(500, 500)
+t.ht()
+t.pensize(2)
+t.screen.tracer(8, 8)
+t.pencolor('black')
+t.fillcolor('green')
+turtle.bgcolor('blue')
+
+num_sides = 6
+side_lenght = 20
+angle = 360.0 / num_sides
+number_of_polygon = 11
+index = -20
+
+def poly():
+    for i in range(num_sides):
+        t.fd(side_lenght)
+        t.rt(angle)
+
+def verty():
+    for i in range(number_of_polygon):
+        t.begin_fill()
+        poly()
+        t.end_fill()
+        t.up()
+        t.sety(t.ycor() - 40)
+        t.pd()
+        t.begin_fill()
+        poly()
+        t.end_fill()
+
+t.up()
+t.sety(240)
+t.setx(-243)
+t.pd()
+
+for p in range(14):
+    verty()
+    t.up()
+    t.setx(t.xcor() + 35)
+    t.sety(t.ycor() + number_of_polygon * 40 - index)
+    t.pd()
+    if p % 2 == 0:
+        index = 20
+    else:
+        index = -20
+
+t.screen.exitonclick()
+t.screen.mainloop()
